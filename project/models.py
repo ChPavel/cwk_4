@@ -8,7 +8,7 @@ class Genre(models.Base):
     __tableargs__ = {'comments': 'Таблица жанров'}
 
     name = Column(String(100), unique=True, nullable=False, comment="Название")
-    movies = relationship("Movie")
+    # movies = relationship("Movie")
 
     def __repr__(self):
         return f'{self.__tableargs__["comments"]}: ' \
@@ -19,7 +19,7 @@ class Director(models.Base):
     __tableargs__ = {'comments': 'Таблица режиссёров'}
 
     name = Column(String(100), unique=True, nullable=False, comment="Имя")
-    movies = relationship("Movie")
+    # movies = relationship("Movie")
 
     def __repr__(self):
         return f'{self.__tableargs__["comments"]}: ' \
