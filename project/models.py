@@ -8,6 +8,7 @@ class Genre(models.Base):
     __tableargs__ = {'comments': 'Таблица жанров'}
 
     name = Column(String(100), unique=True, nullable=False, comment="Название")
+    movies = relationship("Movie")
 
     def __repr__(self):
         return f'{self.__tableargs__["comments"]}: ' \
@@ -18,6 +19,7 @@ class Director(models.Base):
     __tableargs__ = {'comments': 'Таблица режиссёров'}
 
     name = Column(String(100), unique=True, nullable=False, comment="Имя")
+    movies = relationship("Movie")
 
     def __repr__(self):
         return f'{self.__tableargs__["comments"]}: ' \
@@ -52,13 +54,13 @@ class Movie(models.Base):
     year = Column(Integer, nullable=False, comment="Год создания")
     rating = Column(Float, nullable=False, comment="Рейтинг")
     genre_id = Column(Integer, ForeignKey("genres.id"), nullable=False)
-    genres = relationship("Genre")
+    genre = relationship("Genre")
     director_id = Column(Integer, ForeignKey("directors.id"), nullable=False)
-    directors = relationship("Director")
+    director = relationship("Director")
 
     def __repr__(self):
         return f'{self.__tableargs__["comments"]}: ' \
                f'{self.id}, {self.rating}, {self.year},' \
                f'{self.title}, {self.trailer}' \
-               f'{self.directors}, ' \
+               f'{self.director_id}, ' \
                f'{self.genre_id}, {self.director_id}'
