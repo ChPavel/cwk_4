@@ -1,0 +1,86 @@
+GET http://localhost:10001/movies/
+Accept: application/json
+###
+
+GET http://localhost:10001/movies/10
+Accept: application/json
+###
+
+GET http://localhost:10001/movies?status=new&page=1
+Accept: application/json
+###
+
+GET http://localhost:10001/movies?status=new
+Accept: application/json
+###
+
+GET http://localhost:10001/movies?page=1
+Accept: application/json
+###
+
+GET http://localhost:10001/directors/
+Accept: application/json
+###
+
+GET http://localhost:10001/directors/12
+Accept: application/json
+###
+
+GET http://localhost:10001/directors?page=1
+Accept: application/json
+###
+
+GET http://localhost:10001/directors?status=new&page=1
+Accept: application/json
+###
+
+GET http://localhost:10001/genres/
+Accept: application/json
+###
+
+GET http://localhost:10001/genres/11
+Accept: application/json
+###
+
+GET http://localhost:10001/genres?page=1
+Accept: application/json
+###
+
+GET http://localhost:10001/genres?status=new&page=1
+Accept: application/json
+###
+
+POST http://localhost:10001/auth/register
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email": "petrov@mail.com",
+  "password": "qetuo7777",
+  "name": "Piter",
+  "surname": "Porter",
+  "favorite_genre": "Комедяи"
+}
+
+###
+
+POST http://localhost:10001/auth/login
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email": "petrov@mail.com",
+  "password": "qetuo7777"
+}
+
+###
+
+PUT http://localhost:10001/auth/login
+Accept: application/json
+Content-Type: application/json
+
+{
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUGF2ZWwiLCJlbWFpbCI6ImNoZXJub3ZAbWFpbC5jb20iLCJleHAiOjE2NjEwODE1Njd9.qpJ2FcSG6_-72KNPOHAbK9HRrUm7YxXIRSaO6m9my70",
+  "refresh_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUGF2ZWwiLCJlbWFpbCI6ImNoZXJub3ZAbWFpbC5jb20iLCJleHAiOjE2NzIzMTI2Njd9.dHHu8UW_aHJbDvkCvDCReVCCWFnuVzkt2ShGdINK4BE"
+}
+###

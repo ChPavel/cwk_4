@@ -11,8 +11,7 @@ class Genre(models.Base):
     # movies = relationship("Movie")
 
     def __repr__(self):
-        return f'{self.__tableargs__["comments"]}: ' \
-               f'{self.id}, {self.name}'
+        return f'{self.id}, {self.name}'
 
 class Director(models.Base):
     __tablename__ = 'directors'
@@ -22,8 +21,7 @@ class Director(models.Base):
     # movies = relationship("Movie")
 
     def __repr__(self):
-        return f'{self.__tableargs__["comments"]}: ' \
-               f'{self.id}, {self.name}'
+        return f'{self.id}, {self.name}'
 
 
 class User(models.Base):
@@ -37,8 +35,7 @@ class User(models.Base):
     favorite_genre = Column(String(100), comment="Любимый жанр")
 
     def __repr__(self):
-        return f'{self.__tableargs__["comments"]}: ' \
-               f'{self.id}, {self.name}, {self.surname},' \
+        return f'{self.id}, {self.name}, {self.surname},' \
                f'{self.email}, ' \
                f'{self.password}, ' \
                f'{self.favorite_genre}'
@@ -59,8 +56,7 @@ class Movie(models.Base):
     director = relationship("Director")
 
     def __repr__(self):
-        return f'{self.__tableargs__["comments"]}: ' \
-               f'{self.id}, {self.rating}, {self.year},' \
+        return f'{self.id}, {self.rating}, {self.year},' \
                f'{self.title}, {self.trailer}' \
                f'{self.director_id}, ' \
                f'{self.genre_id}, {self.director_id}'

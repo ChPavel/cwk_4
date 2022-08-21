@@ -1,0 +1,2 @@
+ALGO = 'HS256'
+SECRET = 's3cR$eT'
