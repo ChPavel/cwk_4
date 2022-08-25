@@ -14,9 +14,15 @@ GET http://localhost:10001/movies?status=new
 Accept: application/json
 ###
 
+GET http://localhost:10001/movies?status=old
+Accept: application/json
+###
+
 GET http://localhost:10001/movies?page=1
 Accept: application/json
 ###
+
+
 
 GET http://localhost:10001/directors/
 Accept: application/json
@@ -34,6 +40,8 @@ GET http://localhost:10001/directors?status=new&page=1
 Accept: application/json
 ###
 
+
+
 GET http://localhost:10001/genres/
 Accept: application/json
 ###
@@ -50,37 +58,77 @@ GET http://localhost:10001/genres?status=new&page=1
 Accept: application/json
 ###
 
+
+
 POST http://localhost:10001/auth/register
 Accept: application/json
 Content-Type: application/json
 
 {
-  "email": "petrov@mail.com",
-  "password": "qetuo7777",
-  "name": "Piter",
-  "surname": "Porter",
+  "email": "test@mail.com",
+  "password": "test7777",
+  "name": "Test",
+  "surname": "Test",
   "favorite_genre": "Комедяи"
 }
 
 ###
 
-POST http://localhost:10001/auth/login
+DELETE http://localhost:10001/auth/register/1
+Accept: application/json
+###
+
+POST http://localhost:10001/auth/login/
 Accept: application/json
 Content-Type: application/json
 
 {
-  "email": "petrov@mail.com",
-  "password": "qetuo7777"
+  "email": "test@mail.com",
+  "password": "test7777"
 }
 
 ###
 
-PUT http://localhost:10001/auth/login
+PUT http://localhost:10001/auth/login/
 Accept: application/json
 Content-Type: application/json
 
 {
-  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUGF2ZWwiLCJlbWFpbCI6ImNoZXJub3ZAbWFpbC5jb20iLCJleHAiOjE2NjEwODE1Njd9.qpJ2FcSG6_-72KNPOHAbK9HRrUm7YxXIRSaO6m9my70",
-  "refresh_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUGF2ZWwiLCJlbWFpbCI6ImNoZXJub3ZAbWFpbC5jb20iLCJleHAiOjE2NzIzMTI2Njd9.dHHu8UW_aHJbDvkCvDCReVCCWFnuVzkt2ShGdINK4BE"
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwYXNzd29yZCI6Ilx0XHUwMDAwSGxcdTAwMWFcdTAxNzdcdTAwMDBcdTAwMGZ3Klx1MDAwM1x1MDAwMHFcdFx1MDAxM0dSIiwiZW1haWwiOiJ0ZXN0QG1haWwuY29tIiwiZXhwIjoxNjYxNDE4ODE0fQ.C--klmjhVT0i9gSx5eBRAO75yrrZOu3sBVOKLGdiBhI",
+  "refresh_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwYXNzd29yZCI6Ilx0XHUwMDAwSGxcdTAwMWFcdTAxNzdcdTAwMDBcdTAwMGZ3Klx1MDAwM1x1MDAwMHFcdFx1MDAxM0dSIiwiZW1haWwiOiJ0ZXN0QG1haWwuY29tIiwiZXhwIjoxNjcyNjQ5OTE0fQ.jbZJQenH4qDcQDoR9ZmGlIDZGyqJEGcb3zTboNCeias"
 }
+###
+
+
+
+GET http://localhost:10001/user/
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJwYXNzd29yZCI6Ilx0XHUwMDAwSGxcdTAwMWFcdTAxNzdcdTAwMDBcdTAwMGZ3Klx1MDAwM1x1MDAwMHFcdFx1MDAxM0dSIiwiZXhwIjoxNjYxNDIwMTM4fQ.L0j5pFyl1bM7HD_D74xdOiMG1XR7tGBZ5zWVoW6o5_0
+###
+
+PATCH http://localhost:10001/user/
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwYXNzd29yZCI6Ilx0XHUwMDAwSGxcdTAwMWFcdTAxNzdcdTAwMDBcdTAwMGZ3Klx1MDAwM1x1MDAwMHFcdFx1MDAxM0dSIiwiZW1haWwiOiJ0ZXN0QG1haWwuY29tIiwiZXhwIjoxNjYxNDIyMDI1fQ.2Mpjdj_kg0agZjZ8CQpBTV2HDSIKy3UNwdey58ocP_I
+
+{
+  "email": "patch@mail.com",
+  "password": "patch7777",
+  "name": "Patch",
+  "surname": "Patcher",
+  "favorite_genre": "Драмма"
+}
+
+###
+
+PUT http://localhost:10001/user/password/
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwYXNzd29yZCI6Ilx0XHUwMDAwSGxcdTAwMWFcdTAxNzdcdTAwMDBcdTAwMGZ3Klx1MDAwM1x1MDAwMHFcdFx1MDAxM0dSIiwiZW1haWwiOiJ0ZXN0QG1haWwuY29tIiwiZXhwIjoxNjYxNDIyODc2fQ.BivaJvSj-gnKow3t-ea5ZmWGJDu2c0loLvQY7ZykNkw
+
+{
+  "password_1": "test7777",
+  "password_2": "test9999"
+}
+
 ###

@@ -1,3 +1,7 @@
+import jwt
+from flask import request, abort
+from project.tools.security import get_data_by_token
+
 from project.dao import GenresDAO
 from project.dao import DirectorsDAO
 from project.dao import MoviesDAO
@@ -24,3 +28,19 @@ director_service = DirectorsService(dao=director_dao)
 movie_service = MoviesService(dao=movie_dao)
 user_service = UsersService(dao=user_dao)
 auth_service = AuthService(dao=auth_dao)
+
+
+def check_token(func):
+    def wrepper(*args, **kwargs):
+        if 'Authorization' not in request.headers:
+            abort(401)
+
+        data = request.headers['Authorization']
+        token = data.split('Bearer ')[-1]
+        try:
+            get_data_by_token(token)
+        except Exception as e:
+            print(f'Декодирование прошло с ошибкой: {e}')
+            abort(401)
+        return func(*args, **kwargs)
+    return wrepper

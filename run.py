@@ -27,5 +27,5 @@ def shell():
 #         return 'Поиск фильмов'
 
 
-if __name__ == '__main__':                                  # i am
-    app.run(host="localhost", port=10001, debug=True)       # I am
+if __name__ == '__main__':
+    app.run(host="localhost", port=10001, debug=True)

@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, List
 
 from project.dao.base import BaseDAO
 from project.exceptions import ItemNotFound
@@ -6,6 +6,9 @@ from project.models import Genre
 
 
 class GenresService:
+    """
+    Класс сервиса методов для модели Genre по маршрутам /genres.
+    """
     def __init__(self, dao: BaseDAO) -> None:
         self.dao = dao
 
@@ -14,5 +17,5 @@ class GenresService:
             return genre
         raise ItemNotFound(f'Genre with pk={pk} not exists.')
 
-    def get_all(self, page: Optional[int] = None) -> list[Genre]:   # int | None
+    def get_all(self, page: Optional[int] = None) -> List[Genre]:   # int | None
         return self.dao.get_all(page=page)

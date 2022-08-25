@@ -8,7 +8,6 @@ class Genre(models.Base):
     __tableargs__ = {'comments': 'Таблица жанров'}
 
     name = Column(String(100), unique=True, nullable=False, comment="Название")
-    # movies = relationship("Movie")
 
     def __repr__(self):
         return f'{self.id}, {self.name}'
@@ -18,7 +17,6 @@ class Director(models.Base):
     __tableargs__ = {'comments': 'Таблица режиссёров'}
 
     name = Column(String(100), unique=True, nullable=False, comment="Имя")
-    # movies = relationship("Movie")
 
     def __repr__(self):
         return f'{self.id}, {self.name}'
@@ -32,7 +30,7 @@ class User(models.Base):
     password = Column(String(100), nullable=False, comment="пароль")
     name = Column(String(100), comment="Имя")
     surname = Column(String(100), comment="Фамилия")
-    favorite_genre = Column(String(100), comment="Любимый жанр")
+    favorite_genre = Column(String(100), comment="Любимый жанр")    #вариант со ссылкой на жанры Column(Integer, ForeignKey(f"{Genre.__tablename__}.id"), nullable=False)
 
     def __repr__(self):
         return f'{self.id}, {self.name}, {self.surname},' \
@@ -50,7 +48,7 @@ class Movie(models.Base):
     trailer = Column(String(255), nullable=False, comment="Промо-ролик")
     year = Column(Integer, nullable=False, comment="Год создания")
     rating = Column(Float, nullable=False, comment="Рейтинг")
-    genre_id = Column(Integer, ForeignKey("genres.id"), nullable=False)
+    genre_id = Column(Integer, ForeignKey("genres.id"), nullable=False)   # вместо "genres.id" - вариант (f"{Genre.__tablename__}.id"), nullable=False) - для универсальности, чтобы не менять код при смене названия таблицы.
     genre = relationship("Genre")
     director_id = Column(Integer, ForeignKey("directors.id"), nullable=False)
     director = relationship("Director")

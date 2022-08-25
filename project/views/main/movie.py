@@ -1,3 +1,4 @@
+from flask import request
 from flask_restx import Namespace, Resource
 from project.container import movie_service
 from project.setup.api.models import movie
@@ -15,6 +16,9 @@ class MoviesView(Resource):
         """
         Get all movies.
         """
+        # status: str = request.args.get('status')   # вариант перенести из базового DAO во вью и movie_service.
+        # return movie_service.get_all(filter=status, **page_parser.parse_args())
+
         return movie_service.get_all(**page_parser.parse_args())
 
 
